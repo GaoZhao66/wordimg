@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.TFileMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.TFile">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="haxi" jdbcType="VARCHAR" property="haxi" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+  </resultMap>
+
+
+
+  <select id="findByhaxi" resultType="com.company.project.model.TFile">
+        SELECT * FROM t_file where haxi=#{haxi}
+  </select>
+
+
+  <delete id="deleteTFileById">
+       DELETE FROM t_file WHERE id=#{id}
+  </delete>
+
+
+  <insert id="insertTfile" parameterType="com.company.project.model.TFile" useGeneratedKeys="true" keyProperty="id" >
+          INSERT INTO t_file(type,name, address,haxi,create_time) VALUES (#{type},#{name},#{address},#{haxi},#{createTime})
+  </insert>
+
+
+</mapper>

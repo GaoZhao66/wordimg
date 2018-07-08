@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.TFileImagesMapper">
+    <resultMap id="BaseResultMap" type="com.company.project.model.TFileImages">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="word_id" jdbcType="INTEGER" property="wordId"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+    </resultMap>
+
+
+    <select id="findByWordId" resultType="com.company.project.model.TFileImages">
+      SELECT * FROM t_file_images where word_id=#{wordId}
+  </select>
+
+
+    <insert id="insertListTfiles" parameterType="java.util.List">
+        INSERT INTO t_file_images(word_id,name,address) VALUES
+        <foreach collection="list" item="reddemCode" index="index" separator=",">
+            (
+            #{reddemCode.wordId},
+            #{reddemCode.name},
+            #{reddemCode.address}
+            )
+        </foreach>
+    </insert>
+
+</mapper>
